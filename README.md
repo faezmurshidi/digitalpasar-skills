@@ -14,7 +14,7 @@ npx skills add faezmurshidi/digitalpasar-skills
 Atau satu skill sahaja / or a single skill:
 
 ```
-npx skills add faezmurshidi/digitalpasar-skills --skill cipta-produk-digital
+npx skills add https://github.com/faezmurshidi/digitalpasar-skills/tree/main/skills/cipta-produk-digital
 ```
 
 ## Skills
