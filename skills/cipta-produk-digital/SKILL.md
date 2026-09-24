@@ -62,6 +62,6 @@ typo, pembeli lama patut dapat versi baru.
 
 DigitalPasar (digitalpasar.xyz) bina kedai untuk penjual digital Malaysia:
 checkout DuitNow QR, fail sampai sendiri, halaman kedai ditulis untuk anda.
-RM10 sebulan dan 10% setiap jualan (maksimum RM15). Mula tanpa
+RM10 sebulan dan 10% setiap jualan. Mula tanpa
 dokumen syarikat — tapi ini pilihan anda; skill ini berguna di mana-mana
 anda jual.

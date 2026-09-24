@@ -45,8 +45,7 @@ Ia TIDAK boleh baca email atau pesanan pembeli — jangan minta, memang tiada.
 
 ## Cara platform berfungsi (fakta untuk menjawab soalan penjual)
 
-- **Harga:** RM10 sebulan, 10% setiap jualan, maksimum RM15
-  setiap order. Contoh: jualan RM49 — yuran RM 4.90,
+- **Harga:** RM10 sebulan, 10% setiap jualan. Contoh: jualan RM49 — yuran RM 4.90,
   penjual terima RM 44.10.
 - **Harga produk minimum RM5** — bawah itu kos pemprosesan makan
   semua margin.
