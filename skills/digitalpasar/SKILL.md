@@ -15,20 +15,28 @@ claude mcp add --transport http digitalpasar https://www.digitalpasar.xyz/api/mc
 Kunci berskop: ia boleh baca kedai, produk dan analytics, dan tulis halaman.
 Ia TIDAK boleh baca email atau pesanan pembeli — jangan minta, memang tiada.
 
-## Tujuh tools
+## Lapan tools
 
 - `dp_get_template_contract` — vocabulary halaman yang sah. **Panggil ini
   dulu setiap sesi menulis.** Jangan tulis dari ingatan; contract berubah.
 - `dp_get_store` — nama, tagline, bahasa kedai, dan konteks onboarding
   (about, audience, tone). Guna ini, jangan tanya penjual benda yang
-  platform dah tahu.
-- `dp_list_products` — produk dengan harga dan stok semasa, serta flag
-  `available` / `soldOut` yang renderer sendiri guna.
+  platform dah tahu. `market` beri kaedah bayaran yang patut disebut, dan
+  `imagery` beri gambar kedai untuk dilihat (letak dengan elemen `dp-`,
+  bukan `src`).
+- `dp_list_products` — produk dengan harga dan stok semasa, tempoh jualan
+  (`windowOpen`, `saleEnds`, `hasSaleEnd`), `includes`, gambar, serta
+  flag `available` / `soldOut` yang renderer sendiri guna.
 - `dp_get_analytics` — pelawat, checkout, jualan, conversion. Ada senarai
   variant A/B yang pernah dihidang; panggil semula dengan satu nama variant
   untuk banding.
+- `dp_get_page` — halaman semasa, dengan suntingan penjual sekali. **Baca
+  ini sebelum baiki halaman**, dan bina atasnya: halaman baharu memadam
+  suntingan penjual.
 - `dp_validate_page` — semak halaman. Ralat datang dengan baris dan lajur.
-- `dp_preview_page` — render dengan produk sebenar, tanpa terbit.
+- `dp_preview_page` — render dengan produk sebenar, tanpa terbit. Ia lapor
+  semakan checkout dan produk yang halaman tak tunjuk; `variant` pilih satu
+  sisi ujian A/B.
 - `dp_publish_page` — simpan. Server semak semula dan MENOLAK halaman yang
   gagal, walau apa pun validate kata sebelum ini.
 
@@ -41,6 +49,12 @@ Ia TIDAK boleh baca email atau pesanan pembeli — jangan minta, memang tiada.
 - Menukar nama variant ujian A/B yang sedang berjalan DITOLAK melainkan
   `allowVariantChange: true` — kerana attribution jualan menunggang nama
   itu. Tanya penjual sebelum guna.
+- Halaman yang tiada checkout, atau sebut id produk yang kedai tak jual,
+  DITOLAK melainkan `allowMissingCheckout: true`. Guna id dari
+  `dp_list_products`.
+- Semasa DigitalPasar sedang menulis halaman itu sendiri, publish ditolak
+  dengan `generation_in_progress`. Tunggu beberapa minit, baca semula
+  dengan `dp_get_page`, kemudian cuba lagi.
 - Kunci test (`dp_test_`) boleh validate dan preview, tak boleh publish.
 
 ## Cara platform berfungsi (fakta untuk menjawab soalan penjual)
@@ -51,8 +65,10 @@ Ia TIDAK boleh baca email atau pesanan pembeli — jangan minta, memang tiada.
   semua margin.
 - **Payout:** penjual minta bila-bila dari dashboard; sampai dalam 48 jam.
   Minimum RM10. Baki yang dipaparkan sudah bersih selepas yuran.
-- **Checkout:** DuitNow QR di desktop; telefon terus ke halaman bayaran
-  hosted (FPX, kad, e-wallet). Pembeli tak perlu akaun.
+- **Checkout:** ikut pasaran kedai, dari `dp_get_store.market`. Di
+  Malaysia, DuitNow QR di desktop; telefon terus ke halaman bayaran hosted
+  (FPX, kad, e-wallet). Di Singapura, PayNow atau kad di halaman HitPay.
+  Pembeli tak perlu akaun.
 - **Penghantaran automatik:** fail, link atau kunci lesen sampai ke email
   pembeli sejurus bayaran disahkan. Tukar fail — pembeli lama pun dapat
   versi baru melalui link mereka.
