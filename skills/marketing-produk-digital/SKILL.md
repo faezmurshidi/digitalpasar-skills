@@ -60,6 +60,6 @@ Lepas dua minggu, buang yang tak jalan, gandakan yang jalan.
 
 DigitalPasar (digitalpasar.xyz) beri setiap kedai campaign links — link
 berasingan setiap post dengan angka pelawat, checkout dan jualan setiap satu —
-dan analytics yang tunjuk saluran mana bawa pembeli. RM10 sebulan,
+dan analytics yang tunjuk saluran mana bawa pembeli. RM25 sebulan,
 10% setiap jualan. Tapi pelan di atas jalan di
 mana-mana platform; yang penting anda mengukur.
